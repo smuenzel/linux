@@ -495,6 +495,17 @@ const struct io_issue_def io_issue_defs[] = {
 		.prep			= io_ftruncate_prep,
 		.issue			= io_ftruncate,
 	},
+	[IORING_OP_FADVISE64] = {
+		.needs_file		= 1,
+		.audit_skip		= 1,
+		.prep			= io_fadvise64_prep,
+		.issue			= io_fadvise,
+	},
+	[IORING_OP_MADVISE64] = {
+		.audit_skip		= 1,
+		.prep			= io_madvise64_prep,
+		.issue			= io_madvise,
+	},
 };
 
 const struct io_cold_def io_cold_defs[] = {
@@ -715,6 +726,12 @@ const struct io_cold_def io_cold_defs[] = {
 	},
 	[IORING_OP_FTRUNCATE] = {
 		.name			= "FTRUNCATE",
+	},
+	[IORING_OP_FADVISE64] = {
+		.name			= "FADVISE64",
+	},
+	[IORING_OP_MADVISE64] = {
+		.name			= "MADVISE64",
 	},
 };
 
