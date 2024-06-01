@@ -416,6 +416,14 @@ enum io_uring_msg_ring_flags {
 #define IORING_NOP_INJECT_RESULT	(1U << 0)
 
 /*
+ * IORING_OP_FADVISE and IORING_OP_MADVISE flags (stored in sqe->optlen)
+ *
+ * IORING_ADVISE_LEN64          Use 64-bit length stored in sqe->addr3
+ *
+ */
+#define IORING_ADVISE_LEN64		(1U << 0)
+
+/*
  * IO completion data structure (Completion Queue Entry)
  */
 struct io_uring_cqe {
